@@ -14,3 +14,5 @@ class DNA:
                 RNAsequence = RNAsequence + self.sequence[i]
         return RNAsequence
 
+
+
