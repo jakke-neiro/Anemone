@@ -1,6 +1,6 @@
 import argparse
 
-from Nucleotides import DNA
+from nucleotides import DNA
 
 def main():
     # Create the parser
@@ -11,13 +11,19 @@ def main():
                         type=str,
                         help='DNA file')
 
+    parser.add_argument('--count',
+                        metavar='DNAfile',
+                        type=str,
+                        help='DNA sequence')
+
     # Execute the parse_args() method
     args = parser.parse_args()
 
     DNAseq = args.transcribe
+    DNAseqcount = args.count
 
-    dna1 = DNA.DNA(DNAseq)
-    print(dna1.transcribe())
+    dna1 = DNA.DNA(DNAseqcount)
+    dna1.count()
 
 if __name__ == "__main__":
     main()
