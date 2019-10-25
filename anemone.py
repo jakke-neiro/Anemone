@@ -4,6 +4,7 @@ import sys
 
 from nucleotides import DNA
 from nucleotides import fasta
+from nucleotides import Alignment
 
 def main():
     # Create the parser
@@ -29,6 +30,12 @@ def main():
                         metavar='seq',
                         type=str,
                         help='Reverse complement your sequence')
+
+    parser.add_argument('--hamming', "-ha",
+                        metavar='seq',
+                        nargs=2,
+                        type=str,
+                        help='Calculate the hamming distance of two sequences')
 
     # Execute the parse_args() method
 
@@ -59,6 +66,12 @@ def main():
         complement_file = fasta.fa_read(args.reverse_complement)
         dna1 = DNA.DNA(complement_file)
         print(dna1.reverse_complement())
+
+    if args.hamming:
+        seq1_file, seq2_file = args.hamming
+        seq1, seq2 = fasta.fa_read(seq1_file), fasta.fa_read(seq2_file)
+        align = Alignment.Alignment(seq1, seq2)
+        print(align.hamming())
 
 if __name__ == "__main__":
     main()
