@@ -18,12 +18,17 @@ def main():
 
     # Execute the parse_args() method
     args = parser.parse_args()
+    if args.count:
+        DNAseqcount = args.count
+        dna1 = DNA.DNA(DNAseqcount)
+        dna1.count()
 
-    DNAseq = args.transcribe
-    DNAseqcount = args.count
+    if args.transcribe:
+        DNAseq = args.transcribe
+        dna1 = DNA.DNA(DNAseq)
+        print(dna1.transcribe())
 
-    dna1 = DNA.DNA(DNAseqcount)
-    dna1.count()
+    
 
 if __name__ == "__main__":
     main()
