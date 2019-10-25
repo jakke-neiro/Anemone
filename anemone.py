@@ -26,6 +26,11 @@ def main():
                         type=str,
                         help='Transcribe your sequence')
 
+    parser.add_argument('--translate', "-tl",
+                        metavar='seq',
+                        type=str,
+                        help='Translate your sequence')
+
     parser.add_argument('--reverse_complement', "-rc",
                         metavar='seq',
                         type=str,
@@ -61,6 +66,11 @@ def main():
         transcribe_file = fasta.fa_read(args.transcribe)
         dna1 = DNA.DNA(transcribe_file)
         print(dna1.transcribe())
+
+    if args.translate:
+        translate_file = fasta.fa_read(args.translate)
+        dna1 = DNA.DNA(translate_file)
+        print(dna1.translate())
 
     if args.reverse_complement:
         complement_file = fasta.fa_read(args.reverse_complement)
